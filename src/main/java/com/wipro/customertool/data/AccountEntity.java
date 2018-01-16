@@ -1,18 +1,20 @@
 package com.wipro.customertool.data;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-@Entity
 public class AccountEntity {
 	
-	@EmbeddedId
-	private AccountEntityKey id;
+	private String action;
+	private String accountCode;
+	private String currencyCode;
+	private String companyCode;
+	private String bankBranchCode;
+	private String countryCode;
+	private String calendarCode;
+	private String userId;
 	
 	private String rejectCode;
 	private String accountType;
