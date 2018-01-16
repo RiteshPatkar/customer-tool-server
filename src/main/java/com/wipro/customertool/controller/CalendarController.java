@@ -11,35 +11,35 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.customertool.data.Currency;
-import com.wipro.customertool.service.CurrencyService;
+import com.wipro.customertool.data.Calendar;
+import com.wipro.customertool.service.CalendarService;
 
 @RestController
-@RequestMapping(value = "/currency/")
-public class CurrencyController {
+@RequestMapping(value = "/calendar/")
+public class CalendarController {
 
 	@Autowired
-	CurrencyService service;
+	CalendarService service;
 
 	
 	@RequestMapping(value = "{userId}/{countryCode}")
-	public List<Currency> getCurrenciesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
+	public List<Calendar> getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
 			@PathVariable(value = "countryCode") final String countryCode) {
-		return service.getCurrenciesByUserIdAndCountryCode(userId, countryCode);
+		return service.getCalendarByUserIdAndCountryCode(userId, countryCode);
 	}
 	
 	@RequestMapping(method = POST)
-	public String saveCurrencies(@RequestBody List<Currency> currencies) {
-		service.saveCurrencies(currencies);
+	public String saveCalendars(@RequestBody List<Calendar> calendars) {
+		service.saveCalendars(calendars);
 		return "success";
 	}
 	
-	@RequestMapping(value = "{userId}/{countryCode}/{currencyCode}/{flag}", method = DELETE)
-	public String deleteCurrencyById(@PathVariable(value = "userId") final String userId,
+	@RequestMapping(value = "{userId}/{countryCode}/{calendarCode}/{flag}", method = DELETE)
+	public String deleteCalendarById(@PathVariable(value = "userId") final String userId,
 			@PathVariable(value = "countryCode") final String countryCode,
-			@PathVariable(value = "currencyCode") final String currencyCode,
+			@PathVariable(value = "calendarCode") final String calendarCode,
 			@PathVariable(value = "flag") final String flag) {
-		service.deleteCurrencyById(userId, countryCode, currencyCode, flag);
+		service.deleteCalendarById(userId, countryCode, calendarCode, flag);
 		return "success";
 	}
 }
