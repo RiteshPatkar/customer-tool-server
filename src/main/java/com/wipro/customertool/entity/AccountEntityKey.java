@@ -1,12 +1,14 @@
 package com.wipro.customertool.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 import lombok.Data;
 
 @Data
 @Embeddable
-public class AccountEntityKey {
+public class AccountEntityKey implements Serializable {
 	
 	private String action;
 	private String accountCode;
