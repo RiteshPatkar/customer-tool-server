@@ -29,7 +29,7 @@ public class CountryService {
 
 	public void deleteCountryById(String userId, String countryCode, String flag) {
 		CountryEntityKey key = new CountryEntityKey();
-		key.setCountryCode(countryCode).setFlag(flag).setUserId(userId);
+		key.setCountryCode(countryCode).setUserId(userId);
 		repository.delete(new CountryEntity().setId(key));
 	}
 	
@@ -39,7 +39,7 @@ public class CountryService {
 		for (CountryEntity entity : entities) {
 			Country country = new Country();
 			country.setCountryCode(entity.getId().getCountryCode());
-			country.setFlag(entity.getId().getFlag());
+			country.setFlag(entity.getFlag());
 			country.setUserId(entity.getId().getUserId());
 			country.setCurrencyCode(entity.getCurrencyCode());
 			country.setDescription(entity.getDescription());
@@ -59,10 +59,10 @@ public class CountryService {
 			
 			CountryEntityKey key = new CountryEntityKey();
 			key.setCountryCode(country.getCountryCode());
-			key.setFlag(country.getFlag());
 			key.setUserId(country.getUserId());
 			
 			entity.setId(key);
+			entity.setFlag(country.getFlag());
 			entity.setCurrencyCode(country.getCurrencyCode());
 			entity.setDescription(country.getDescription());
 			entity.setPostalCodeLength(country.getPostalCodeLength());

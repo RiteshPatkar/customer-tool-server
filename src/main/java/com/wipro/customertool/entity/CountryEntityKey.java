@@ -12,7 +12,6 @@ public class CountryEntityKey implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String flag;
 	private String countryCode;
 	private String userId;
 }

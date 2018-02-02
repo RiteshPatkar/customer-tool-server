@@ -14,6 +14,7 @@ public class CountryEntity {
 	@EmbeddedId
 	private CountryEntityKey id;
 	
+	private String flag;
 	private String description;
 	private String currencyCode;
 	private Integer postalCodeLength;
