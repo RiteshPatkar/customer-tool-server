@@ -15,7 +15,6 @@ public class CompanyEntity {
 	private CompanyEntityKey id;
 	
 	private String rejectCode;
-	private String shortCode;
 	private String description;
 	private String description2;
 	private String corporateCodeId;

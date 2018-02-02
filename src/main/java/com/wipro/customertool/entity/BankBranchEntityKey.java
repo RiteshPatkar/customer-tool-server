@@ -1,12 +1,14 @@
 package com.wipro.customertool.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 import lombok.Data;
 
 @Data
 @Embeddable
-public class BankBranchEntityKey {
+public class BankBranchEntityKey implements Serializable{
 	
 	private String action;
 	private String bankBranchCode;

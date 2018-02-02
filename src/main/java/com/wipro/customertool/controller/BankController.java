@@ -15,7 +15,7 @@ import com.wipro.customertool.data.Country;
 import com.wipro.customertool.service.CountryService;
 
 @RestController
-@RequestMapping(value = "/country/")
+@RequestMapping(value = "/bank/")
 public class BankController {
 
 	@Autowired
