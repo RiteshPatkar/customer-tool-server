@@ -14,6 +14,9 @@ public class CompanyEntity {
 	@EmbeddedId
 	private CompanyEntityKey id;
 	
+	private String glCurrencyCode;
+	private String countryCode;
+	private String currencyCode;
 	private String rejectCode;
 	private String shortCode;
 	private String description;

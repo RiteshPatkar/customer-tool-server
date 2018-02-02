@@ -22,7 +22,7 @@ public class BankService {
 		return buildTOFromEntites(bankEntities);
 	}
 
-	public void saveBanksByUserId(List<Bank> banks) {
+	public void saveBanks(List<Bank> banks) {
 		List<BankEntity> bankEntities = buildEntitesFromTO(banks);
 		repository.save(bankEntities);
 	}
