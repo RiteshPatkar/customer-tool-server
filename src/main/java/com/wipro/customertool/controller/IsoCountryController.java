@@ -1,7 +1,5 @@
 package com.wipro.customertool.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +14,8 @@ public class IsoCountryController {
 	@Autowired
 	IsoCountryService service;
 	
-	public List<IsoCountry> getIsoCountries() {
+	@RequestMapping(value = "/codes")
+	public IsoCountry getIsoCountries() {
 		return service.getIsoCountries();
 	}
 

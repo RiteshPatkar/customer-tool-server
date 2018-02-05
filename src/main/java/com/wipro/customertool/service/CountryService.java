@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wipro.customertool.data.Countries;
 import com.wipro.customertool.data.Country;
+import com.wipro.customertool.data.IsoCountry;
 import com.wipro.customertool.entity.CountryEntity;
 import com.wipro.customertool.entity.CountryEntityKey;
 import com.wipro.customertool.repository.CountryRepository;
@@ -17,9 +19,14 @@ public class CountryService {
 	@Autowired
 	CountryRepository repository;
 	
-	public List<Country> getCountriesByUserId(final String userId) {
+	@Autowired
+	IsoCountryService isoCountryService;
+	
+	public Countries getCountriesByUserId(final String userId) {
 		List<CountryEntity> countryEntities =  repository.findByIdUserIdIgnoreCase(userId);
-		return buildTOFromEntites(countryEntities);
+//		IsoCountry isoCountry = isoCountryService.getIsoCountries();
+		return (new Countries()).setUserCountries(buildTOFromEntites(countryEntities));
+//				.setIsoCountryCodes(isoCountry.getCountryCodes());
 	}
 
 	public void saveCountriesByUserId(List<Country> countries) {
@@ -27,7 +34,7 @@ public class CountryService {
 		repository.save(countryEntities);
 	}
 
-	public void deleteCountryById(String userId, String countryCode, String flag) {
+	public void deleteCountryById(String userId, String countryCode) {
 		CountryEntityKey key = new CountryEntityKey();
 		key.setCountryCode(countryCode).setUserId(userId);
 		repository.delete(new CountryEntity().setId(key));
@@ -42,7 +49,7 @@ public class CountryService {
 			country.setFlag(entity.getFlag());
 			country.setUserId(entity.getId().getUserId());
 			country.setCurrencyCode(entity.getCurrencyCode());
-			country.setDescription(entity.getDescription());
+			country.setCountryDescription(entity.getDescription());
 			country.setPostalCodeLength(entity.getPostalCodeLength());
 			country.setPostalCodePosition(entity.getPostalCodePosition());
 			
@@ -64,7 +71,7 @@ public class CountryService {
 			entity.setId(key);
 			entity.setFlag(country.getFlag());
 			entity.setCurrencyCode(country.getCurrencyCode());
-			entity.setDescription(country.getDescription());
+			entity.setDescription(country.getCountryDescription());
 			entity.setPostalCodeLength(country.getPostalCodeLength());
 			entity.setPostalCodePosition(country.getPostalCodePosition());
 			

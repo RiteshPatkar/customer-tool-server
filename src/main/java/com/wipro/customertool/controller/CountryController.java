@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wipro.customertool.data.Countries;
 import com.wipro.customertool.data.Country;
 import com.wipro.customertool.service.CountryService;
 
@@ -22,8 +23,8 @@ public class CountryController {
 	CountryService service;
 
 	
-	@RequestMapping(value = "{userId}")
-	public List<Country> getCountriesByUserId(@PathVariable(value = "userId") final String userId) {
+	@RequestMapping(value = "user/{userId}")
+	public Countries getCountriesByUserId(@PathVariable(value = "userId") final String userId) {
 		return service.getCountriesByUserId(userId);
 	}
 	
@@ -33,11 +34,16 @@ public class CountryController {
 		return "success";
 	}
 	
+//	@RequestMapping(method = POST)
+//	public String addCountry(@RequestBody Country country) {
+////		service.saveCountriesByUserId(countries);
+//		return "success";
+//	}
+	
 	@RequestMapping(value = "{userId}/{countryCode}/{flag}", method = DELETE)
 	public String deleteCountryById(@PathVariable(value = "userId") final String userId,
-			@PathVariable(value = "countryCode") final String countryCode,
-			@PathVariable(value = "flag") final String flag) {
-		service.deleteCountryById(userId, countryCode, flag);
+			@PathVariable(value = "countryCode") final String countryCode) {
+		service.deleteCountryById(userId, countryCode);
 		return "success";
 	}
 }

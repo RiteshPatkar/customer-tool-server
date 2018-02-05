@@ -16,15 +16,15 @@ public class IsoCountryService {
 	@Autowired
 	IsoCountryRepository repository;
 	
-	public List<IsoCountry> getIsoCountries() {
-		List<IsoCountry> IsoCountries = new ArrayList<>();
+	public IsoCountry getIsoCountries() {
+		IsoCountry response = new IsoCountry();
+		List<String> countryCodes = new ArrayList<>();
 		
 		List<IsoCountryEntity> entities = repository.findAll();
 		for(IsoCountryEntity entity: entities) {
-			IsoCountry isoCountry = new IsoCountry();
-			isoCountry.setCountryCode(entity.getCountryCode());
+			countryCodes.add(entity.getCountryCode());
 		}
-		return IsoCountries;
+		return response.setCountryCodes(countryCodes);
 	}
 
 }

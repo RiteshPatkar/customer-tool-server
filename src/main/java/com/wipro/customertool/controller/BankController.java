@@ -24,7 +24,8 @@ public class BankController {
 	
 	@RequestMapping(value = "{userId}")
 	public List<Country> getCountriesByUserId(@PathVariable(value = "userId") final String userId) {
-		return service.getCountriesByUserId(userId);
+//		return service.getCountriesByUserId(userId);
+		return null;
 	}
 	
 	@RequestMapping(method = POST)
@@ -35,9 +36,8 @@ public class BankController {
 	
 	@RequestMapping(value = "{userId}/{countryCode}/{flag}", method = DELETE)
 	public String deleteCountryById(@PathVariable(value = "userId") final String userId,
-			@PathVariable(value = "countryCode") final String countryCode,
-			@PathVariable(value = "flag") final String flag) {
-		service.deleteCountryById(userId, countryCode, flag);
+			@PathVariable(value = "countryCode") final String countryCode) {
+		service.deleteCountryById(userId, countryCode);
 		return "success";
 	}
 }

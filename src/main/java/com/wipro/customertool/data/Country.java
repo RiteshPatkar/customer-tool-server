@@ -11,7 +11,7 @@ public class Country {
 	private String countryCode;
 	private String userId;
 	
-	private String description;
+	private String CountryDescription;
 	private String currencyCode;
 	private Integer postalCodeLength;
 	private Integer postalCodePosition;
