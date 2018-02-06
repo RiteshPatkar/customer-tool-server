@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.wipro.customertool.data.Countries;
 import com.wipro.customertool.data.Country;
-import com.wipro.customertool.data.IsoCountry;
 import com.wipro.customertool.entity.CountryEntity;
-import com.wipro.customertool.entity.CountryEntityKey;
 import com.wipro.customertool.repository.CountryRepository;
 
 @Service
@@ -22,22 +20,21 @@ public class CountryService {
 	@Autowired
 	IsoCountryService isoCountryService;
 	
-	public Countries getCountriesByUserId(final String userId) {
-		List<CountryEntity> countryEntities =  repository.findByIdUserIdIgnoreCase(userId);
+	public Countries getCountriesByUserId(final Integer userId) {
+		List<CountryEntity> countryEntities =  repository.findByUserId(userId);
 //		IsoCountry isoCountry = isoCountryService.getIsoCountries();
 		return (new Countries()).setUserCountries(buildTOFromEntites(countryEntities));
 //				.setIsoCountryCodes(isoCountry.getCountryCodes());
 	}
 
-	public void saveCountriesByUserId(List<Country> countries) {
+	public void saveCountries(Countries input) {
+		List<Country> countries = input.getUserCountries();
 		List<CountryEntity> countryEntities = buildEntitesFromTO(countries);
 		repository.save(countryEntities);
 	}
 
-	public void deleteCountryById(String userId, String countryCode) {
-		CountryEntityKey key = new CountryEntityKey();
-		key.setCountryCode(countryCode).setUserId(userId);
-		repository.delete(new CountryEntity().setId(key));
+	public void deleteCountryById(Integer id) {
+		repository.delete(new CountryEntity().setId(id));
 	}
 	
 	private List<Country> buildTOFromEntites(List<CountryEntity> entities) {
@@ -45,9 +42,10 @@ public class CountryService {
 		
 		for (CountryEntity entity : entities) {
 			Country country = new Country();
-			country.setCountryCode(entity.getId().getCountryCode());
+			country.setId(entity.getId());
+			country.setCountryCode(entity.getCountryCode());
 			country.setFlag(entity.getFlag());
-			country.setUserId(entity.getId().getUserId());
+			country.setUserId(entity.getUserId());
 			country.setCurrencyCode(entity.getCurrencyCode());
 			country.setCountryDescription(entity.getDescription());
 			country.setPostalCodeLength(entity.getPostalCodeLength());
@@ -63,12 +61,9 @@ public class CountryService {
 		
 		for (Country country : countries) {
 			CountryEntity entity = new CountryEntity();
-			
-			CountryEntityKey key = new CountryEntityKey();
-			key.setCountryCode(country.getCountryCode());
-			key.setUserId(country.getUserId());
-			
-			entity.setId(key);
+			entity.setId(country.getId());
+			entity.setCountryCode(country.getCountryCode());
+			entity.setUserId(country.getUserId());
 			entity.setFlag(country.getFlag());
 			entity.setCurrencyCode(country.getCurrencyCode());
 			entity.setDescription(country.getCountryDescription());

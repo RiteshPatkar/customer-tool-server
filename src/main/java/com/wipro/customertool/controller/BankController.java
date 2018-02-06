@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.wipro.customertool.data.Country;
-import com.wipro.customertool.service.CountryService;
+import com.wipro.customertool.service.BankService;
 
 @RestController
 @RequestMapping(value = "/bank/")
 public class BankController {
 
 	@Autowired
-	CountryService service;
+	BankService service;
 
 	
 	@RequestMapping(value = "{userId}")
@@ -30,14 +30,14 @@ public class BankController {
 	
 	@RequestMapping(method = POST)
 	public String saveCountriesByUserId(@RequestBody List<Country> countries) {
-		service.saveCountriesByUserId(countries);
+//		service.saveCountries(countries);
 		return "success";
 	}
 	
 	@RequestMapping(value = "{userId}/{countryCode}/{flag}", method = DELETE)
 	public String deleteCountryById(@PathVariable(value = "userId") final String userId,
 			@PathVariable(value = "countryCode") final String countryCode) {
-		service.deleteCountryById(userId, countryCode);
+//		service.deleteCountryById(userId, countryCode);
 		return "success";
 	}
 }

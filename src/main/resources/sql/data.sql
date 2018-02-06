@@ -1,3 +1,9 @@
+INSERT INTO  COUNTRY_ENTITY  values (1, 'US', 'USD', 'America', 'Y', 5, 0, 1 );
+INSERT INTO  COUNTRY_ENTITY  values (2, 'US', 'USD', 'America', 'Y', 5, 0, 1 );
+INSERT INTO  COUNTRY_ENTITY  values (3, 'AD', 'ADM', 'Andora', 'Y', 5, 0, 1 );
+INSERT INTO  COUNTRY_ENTITY  values (4, 'AD', 'ADM', 'Andora', 'N', 5, 0, 1 );
+
+
 insert into ISO_COUNTRY values(1,'AF','Afghanistan');
 insert into ISO_COUNTRY values(2,'AX','Aland Islands');
 insert into ISO_COUNTRY values(3,'AL','Albania');
@@ -244,7 +250,3 @@ insert into ISO_COUNTRY values(246,'EH','Western Sahara');
 insert into ISO_COUNTRY values(247,'YE','Yemen');
 insert into ISO_COUNTRY values(248,'ZM','Zambia');
 insert into ISO_COUNTRY values(249,'ZW','Zimbabwe');
-
-
-INSERT INTO  COUNTRY_ENTITY  values ('US', '1', 'USD', 'America', 'Y', 5, 1 );
-INSERT INTO  COUNTRY_ENTITY  values ('AD', '1', 'ADM', 'Andora', 'Y', 5, 1 );
