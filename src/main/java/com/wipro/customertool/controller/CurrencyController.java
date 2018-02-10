@@ -3,15 +3,13 @@ package com.wipro.customertool.controller;
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.customertool.data.Currency;
+import com.wipro.customertool.data.Currencies;
 import com.wipro.customertool.service.CurrencyService;
 
 @RestController
@@ -22,24 +20,26 @@ public class CurrencyController {
 	CurrencyService service;
 
 	
-	@RequestMapping(value = "{userId}/{countryCode}")
-	public List<Currency> getCurrenciesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
-			@PathVariable(value = "countryCode") final String countryCode) {
-		return service.getCurrenciesByUserIdAndCountryCode(userId, countryCode);
+	@RequestMapping(value = "{userId}")
+	public Currencies getCurrenciesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
+		return service.getCurrenciesByUserIdAndCountryCodes(userId, null);
+	}
+	
+	@RequestMapping(value = "{userId}/{countryCodes}")
+	public Currencies getCurrenciesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
+			@PathVariable(value = "countryCodes") final String[] countryCodes) {
+		return service.getCurrenciesByUserIdAndCountryCodes(userId, countryCodes);
 	}
 	
 	@RequestMapping(method = POST)
-	public String saveCurrencies(@RequestBody List<Currency> currencies) {
+	public String saveCurrencies(@RequestBody Currencies currencies) {
 		service.saveCurrencies(currencies);
 		return "success";
 	}
 	
-	@RequestMapping(value = "{userId}/{countryCode}/{currencyCode}/{flag}", method = DELETE)
-	public String deleteCurrencyById(@PathVariable(value = "userId") final String userId,
-			@PathVariable(value = "countryCode") final String countryCode,
-			@PathVariable(value = "currencyCode") final String currencyCode,
-			@PathVariable(value = "flag") final String flag) {
-		service.deleteCurrencyById(userId, countryCode, currencyCode, flag);
+	@RequestMapping(value = "{id}", method = DELETE)
+	public String deleteCurrencyById(@PathVariable(value = "id") final Integer id) {
+		service.deleteCurrencyById(id);
 		return "success";
 	}
 }
