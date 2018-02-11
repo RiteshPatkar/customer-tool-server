@@ -10,13 +10,17 @@ import org.springframework.stereotype.Service;
 import com.wipro.customertool.data.Currencies;
 import com.wipro.customertool.data.Currency;
 import com.wipro.customertool.entity.CurrencyEntity;
+import com.wipro.customertool.repository.CountryRepository;
 import com.wipro.customertool.repository.CurrencyRepository;
 
 @Service
 public class CurrencyService {
 	
 	@Autowired
-	CurrencyRepository repository;
+	CurrencyRepository currencyRepository;
+	
+	@Autowired
+	CountryRepository countryRepository;
 	
 	public Currencies getCurrenciesByUserIdAndCountryCodes(final String userId, final String[] countryCodes) {
 		
@@ -24,28 +28,34 @@ public class CurrencyService {
 		
 		
 		if(null == countryCodes) {
-			currencyEntities =  repository.findByUserId(userId);
+			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
+			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
+				currencyEntities =  currencyRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
+			} else {
+				currencyEntities =  currencyRepository.findByUserId(userId);
+			}
 		}
 		else {
-			currencyEntities =  repository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));
+			currencyEntities =  currencyRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));
 		}
-		return new Currencies().setUserCurrencies(buildTOFromEntites(currencyEntities));
+		return new Currencies().setCurrencies(buildTOFromEntites(currencyEntities));
 	}
 
 	public void saveCurrencies(Currencies input) {
-		List<Currency> currencies = input.getUserCurrencies();
+		List<Currency> currencies = input.getCurrencies();
 		List<CurrencyEntity> currencyEntities = buildEntitesFromTO(currencies);
-		repository.save(currencyEntities);
+		currencyRepository.save(currencyEntities);
 	}
 
 	public void deleteCurrencyById(Integer id) {
-		repository.delete(new CurrencyEntity().setId(id));
+		currencyRepository.delete(new CurrencyEntity().setId(id));
 	}
 	
 	private List<Currency> buildTOFromEntites(List<CurrencyEntity> entities) {
 		List<Currency> currencies = new ArrayList<>();
 		
 		for (CurrencyEntity entity : entities) {
+
 			Currency currency = new Currency();
 			currency.setId(entity.getId());
 			currency.setFlag(entity.getFlag());

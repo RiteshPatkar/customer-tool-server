@@ -13,6 +13,6 @@ import lombok.EqualsAndHashCode;
 @JsonInclude(Include.NON_EMPTY)
 public class Currencies {
 	
-	private List<Currency> userCurrencies;
+	private List<Currency> currencies;
 
 }
