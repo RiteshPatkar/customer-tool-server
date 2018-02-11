@@ -9,37 +9,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.customertool.data.Calendars;
-import com.wipro.customertool.service.CalendarService;
+import com.wipro.customertool.data.Accounts;
+import com.wipro.customertool.service.AccountService;
 
 @RestController
-@RequestMapping(value = "/calendar/")
-public class CalendarController {
+@RequestMapping(value = "/account/")
+public class AccountController {
 
 	@Autowired
-	CalendarService service;
+	AccountService service;
 
 	
 	@RequestMapping(value = "{userId}")
-	public Calendars getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
-		return service.getCalendarsByUserIdAndCountryCodes(userId, null);
+	public Accounts getAccountsByUserId(@PathVariable(value = "userId") final String userId) {
+		return service.getAccountsByUserIdAndCountryCodes(userId, null);
 	}
 	
 	@RequestMapping(value = "{userId}/{countryCodes}")
-	public Calendars getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
+	public Accounts getAccountsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
 			@PathVariable(value = "countryCodes") final String[] countryCodes) {
-		return service.getCalendarsByUserIdAndCountryCodes(userId, countryCodes);
+		return service.getAccountsByUserIdAndCountryCodes(userId, countryCodes);
 	}
 	
 	@RequestMapping(method = POST)
-	public String saveCalendars(@RequestBody Calendars calendars) {
-		service.saveCalendars(calendars);
+	public String saveAccounts(@RequestBody Accounts accounts) {
+		service.saveAccounts(accounts);
 		return "success";
 	}
 	
 	@RequestMapping(value = "{id}", method = DELETE)
-	public String deleteCalendarById(@PathVariable(value = "id") final Integer id) {
-		service.deleteCalendarById(id);
+	public String deleteAccountById(@PathVariable(value = "id") final Integer id) {
+		service.deleteAccountById(id);
 		return "success";
 	}
 }

@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Calendar {
 	
+	private Integer id;
+	
 	private String flag;
 	private String calendarCode;
 	private String countryCode;

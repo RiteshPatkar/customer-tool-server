@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Account {
 	
+	private Integer id;
 	private String action;
 	private String accountCode;
 	private String currencyCode;

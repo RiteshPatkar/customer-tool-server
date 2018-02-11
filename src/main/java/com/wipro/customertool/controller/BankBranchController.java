@@ -9,37 +9,36 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.customertool.data.Calendars;
-import com.wipro.customertool.service.CalendarService;
+import com.wipro.customertool.data.BankBranches;
+import com.wipro.customertool.service.BankBranchService;
 
 @RestController
-@RequestMapping(value = "/calendar/")
-public class CalendarController {
+@RequestMapping(value = "/bankBranch/")
+public class BankBranchController {
 
 	@Autowired
-	CalendarService service;
+	BankBranchService service;
 
-	
 	@RequestMapping(value = "{userId}")
-	public Calendars getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
-		return service.getCalendarsByUserIdAndCountryCodes(userId, null);
+	public BankBranches getBankBranchesByUserId(@PathVariable(value = "userId") final String userId) {
+		return service.getBankBranchesByUserIdAndCountryCodes(userId, null);
 	}
 	
 	@RequestMapping(value = "{userId}/{countryCodes}")
-	public Calendars getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
+	public BankBranches getBankBranchesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId, 
 			@PathVariable(value = "countryCodes") final String[] countryCodes) {
-		return service.getCalendarsByUserIdAndCountryCodes(userId, countryCodes);
+		return service.getBankBranchesByUserIdAndCountryCodes(userId, countryCodes);
 	}
 	
 	@RequestMapping(method = POST)
-	public String saveCalendars(@RequestBody Calendars calendars) {
-		service.saveCalendars(calendars);
+	public String saveBankBranches(@RequestBody BankBranches bankBranches) {
+		service.saveBankBranches(bankBranches);
 		return "success";
 	}
 	
 	@RequestMapping(value = "{id}", method = DELETE)
-	public String deleteCalendarById(@PathVariable(value = "id") final Integer id) {
-		service.deleteCalendarById(id);
+	public String deleteBankById(@PathVariable(value = "id") final Integer id) {
+		service.deleteBankBranchById(id);
 		return "success";
 	}
 }

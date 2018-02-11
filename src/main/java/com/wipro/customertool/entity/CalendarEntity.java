@@ -1,7 +1,9 @@
 package com.wipro.customertool.entity;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,8 +13,14 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class CalendarEntity {
 	
-	@EmbeddedId
-	private CalendarEntityKey id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	
+	private String flag;
+	private String calendarCode;
+	private String countryCode;
+	private String userId;
 	
 	private String description;
 }

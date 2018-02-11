@@ -11,7 +11,8 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper=false)
 @JsonInclude(Include.NON_EMPTY)
+public class Accounts {
+	
+	private List<Account> accounts;
 
-public class Companies {
-	private List<Company> companies;
 }

@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 @JsonInclude(Include.NON_EMPTY)
 
-public class Companies {
-	private List<Company> companies;
+public class BankBranches {
+	private List<BankBranch> bankBranches;
+
 }

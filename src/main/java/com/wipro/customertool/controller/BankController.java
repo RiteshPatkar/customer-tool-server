@@ -21,7 +21,7 @@ public class BankController {
 
 	
 	@RequestMapping(value = "{userId}")
-	public Banks getBanksByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
+	public Banks getBanksByUserId(@PathVariable(value = "userId") final String userId) {
 		return service.getBanksByUserIdAndCountryCodes(userId, null);
 	}
 	
