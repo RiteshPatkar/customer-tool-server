@@ -7,9 +7,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Bank {
 	
-	private String bankCode;
+	private Integer id;
 	private String userId;
-	
+	private String countryCode;
+
+	private String bankCode;
 	private String description;
 	private String interCompany;
 	private String dealIntermediary;
