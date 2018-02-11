@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 public class Company {
 	
+	private Integer id;
 	private String action;
 	private String companyCode;
 	private String shortCode;
@@ -14,7 +15,6 @@ public class Company {
 	private String glCurrencyCode;
 	private String countryCode;
 	private String userId;
-	
 	private String rejectCode;
 	private String description;
 	private String description2;

@@ -1,7 +1,9 @@
 package com.wipro.customertool.entity;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,10 +13,20 @@ import lombok.EqualsAndHashCode;
 @Entity
 public class CompanyEntity {
 	
-	@EmbeddedId
-	private CompanyEntityKey id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
+	private String userId;
+	private String countryCode;
+
+	private String action;
+	private String companyCode;
+
+	private String glCurrencyCode;
+	private String currencyCode;
 	private String rejectCode;
+	private String shortCode;
 	private String description;
 	private String description2;
 	private String corporateCodeId;
