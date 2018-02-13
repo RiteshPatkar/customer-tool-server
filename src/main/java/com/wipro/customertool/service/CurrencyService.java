@@ -24,12 +24,15 @@ public class CurrencyService {
 	
 	public Currencies getCurrenciesByUserIdAndCountryCodes(final String userId, final String[] countryCodes) {
 		
+		Currencies response = new Currencies();
+		
 		List<CurrencyEntity> currencyEntities = null;
 		
 		
 		if(null == countryCodes) {
 			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
 			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
+//				response.setIsoCountryCodes(Arrays.asList(retrievedCountryCodes));
 				currencyEntities =  currencyRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
 			} else {
 				currencyEntities =  currencyRepository.findByUserId(userId);
@@ -38,7 +41,7 @@ public class CurrencyService {
 		else {
 			currencyEntities =  currencyRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));
 		}
-		return new Currencies().setCurrencies(buildTOFromEntites(currencyEntities));
+		return response.setCurrencies(buildTOFromEntites(currencyEntities));
 	}
 
 	public void saveCurrencies(Currencies input) {

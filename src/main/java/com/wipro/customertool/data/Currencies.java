@@ -14,5 +14,6 @@ import lombok.EqualsAndHashCode;
 public class Currencies {
 	
 	private List<Currency> currencies;
+//	private List<String> isoCountryCodes;
 
 }

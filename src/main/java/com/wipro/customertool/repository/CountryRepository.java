@@ -13,6 +13,6 @@ public interface CountryRepository extends JpaRepository<CountryEntity, Integer>
 	
 	List<CountryEntity> findByUserId(Integer userId);
 	
-	@Query(value="select countryCode from CountryEntity c where c.flag = 'Y' AND c.userId = ?1", nativeQuery = false)
+	@Query(value="select distinct countryCode from CountryEntity c where c.flag = 'Y' AND c.userId = ?1", nativeQuery = false)
 	public String[] getcountryCodesForYFlag(Integer userId);
 }
