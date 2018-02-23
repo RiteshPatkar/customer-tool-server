@@ -56,6 +56,7 @@ public class CompanyService {
 		for (CompanyEntity entity : entities) {
 			Company company = new Company();
 
+			company.setId(entity.getId());
 			company.setAction(entity.getAction());
 			company.setCompanyCode(entity.getCompanyCode());
 			company.setShortCode(entity.getShortCode());
@@ -91,9 +92,9 @@ public class CompanyService {
 			company.setInterfaceCode(entity.getInterfaceCode());
 			company.setLegalForm(entity.getLegalForm());
 			company.setCapital(entity.getCapital());
-			company.setLegalrepresentative1(entity.getLegalrepresentative1());
+			company.setLegalRepresentative1(entity.getLegalRepresentative1());
 			company.setPosition1(entity.getPosition1());
-			company.setLegalrepresentative2(entity.getLegalrepresentative2());
+			company.setLegalRepresentative2(entity.getLegalRepresentative2());
 			company.setPosition2(entity.getPosition2());
 			company.setLegalFreeText1(entity.getLegalFreeText1());
 			company.setLegalFreeText2(entity.getLegalFreeText2());
@@ -155,9 +156,9 @@ public class CompanyService {
 			 entity.setInterfaceCode(company.getInterfaceCode());
 			 entity.setLegalForm(company.getLegalForm());
 			 entity.setCapital(company.getCapital());
-			 entity.setLegalrepresentative1(company.getLegalrepresentative1());
+			 entity.setLegalRepresentative1(company.getLegalRepresentative1());
 			 entity.setPosition1(company.getPosition1());
-			 entity.setLegalrepresentative2(company.getLegalrepresentative2());
+			 entity.setLegalRepresentative2(company.getLegalRepresentative2());
 			 entity.setPosition2(company.getPosition2());
 			 entity.setLegalFreeText1(company.getLegalFreeText1());
 			 entity.setLegalFreeText2(company.getLegalFreeText2());

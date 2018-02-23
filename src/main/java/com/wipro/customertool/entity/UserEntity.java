@@ -1,6 +1,8 @@
 package com.wipro.customertool.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
@@ -10,7 +12,12 @@ import lombok.Data;
 public class UserEntity {
 	
 	@Id
-	private String userId;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer userId;
 	
+	private String firstName;
+	private String lastName;
+	private  String userName;
+	private String password;
 
 }

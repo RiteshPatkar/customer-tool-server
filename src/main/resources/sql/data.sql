@@ -1,3 +1,12 @@
+//INSERT INTO COMPANY_ENTITY values (1,null, 'C', '80 Robinson Road',  'New Castle County', null, null, 'Wilmington', '101_CORP', null, null, 'Treasury','na_implementation@kyriba.com', '212-784-0000', 'John Smith', '212-784-5000', null, null, 'US', 'USD', null, 'ABC Corporation',null, null, 'USD', null, null, null, 0, null, null, null, null, null, null, null, null, 'Lee Huey Fong (resident Foxconn director)
+//Chung-Te Fan (Foxconn director)
+//Brian Wheeler
+//Ayako Adachi (alternate director to Brian Wheeler)', null, null,  null, null, null, null, null, null, '100', 'DE', null, '1', '19808'
+//) 
+
+
+
+
 INSERT INTO  COUNTRY_ENTITY  values (1, 'US', 'USD', 'America', 'Y', 5, 0, 1 );
 INSERT INTO  COUNTRY_ENTITY  values (2, 'US', 'USD', 'America', 'Y', 5, 0, 1 );
 INSERT INTO  COUNTRY_ENTITY  values (3, 'AD', 'ADM', 'Andora', 'Y', 5, 0, 1 );

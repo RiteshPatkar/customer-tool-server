@@ -43,9 +43,9 @@ public class Company {
 	private String interfaceCode;
 	private String legalForm;
 	private String capital;
-	private String legalrepresentative1;
+	private String legalRepresentative1;
 	private String position1;
-	private String legalrepresentative2;
+	private String legalRepresentative2;
 	private String position2;
 	private String legalFreeText1;
 	private String legalFreeText2;
