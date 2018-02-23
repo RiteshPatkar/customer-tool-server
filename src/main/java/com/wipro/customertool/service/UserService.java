@@ -20,13 +20,13 @@ public class UserService {
 		entity.setFirstName(user.getFirstName());
 		entity.setLastName(user.getLastName());
 		entity.setPassword(user.getPassword());
-		entity.setUserName(user.getUserName());
+		entity.setUsername(user.getUsername());
 		
 		repository.save(entity);
 	}
 
 	public User login(User user) {
-		List<UserEntity> userEntities = repository.findByUserName(user.getUserName());
+		List<UserEntity> userEntities = repository.findByUsername(user.getUsername());
 		if(userEntities == null || userEntities.size() == 0) {
 			return null;
 		}

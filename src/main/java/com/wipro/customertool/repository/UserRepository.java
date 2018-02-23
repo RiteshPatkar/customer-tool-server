@@ -10,6 +10,6 @@ import com.wipro.customertool.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	
-	List<UserEntity> findByUserName(String userName);
+	List<UserEntity> findByUsername(String username);
 
 }
