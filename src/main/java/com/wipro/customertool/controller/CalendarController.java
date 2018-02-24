@@ -21,7 +21,7 @@ public class CalendarController {
 
 	
 	@RequestMapping(value = "{userId}")
-	public Calendars getCalendarsByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
+	public Calendars getCalendarsByUserId(@PathVariable(value = "userId") final String userId) {
 		return service.getCalendarsByUserIdAndCountryCodes(userId, null);
 	}
 	

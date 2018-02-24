@@ -57,6 +57,7 @@ public class AccountService {
 		for (AccountEntity entity : entities) {
 			Account account = new Account();
 			
+			account.setId(entity.getId());
 			account.setAction(entity.getAction());
 			account.setAccountCode(entity.getAccountCode());
 			account.setCurrencyCode(entity.getCurrencyCode());

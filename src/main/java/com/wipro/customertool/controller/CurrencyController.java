@@ -21,7 +21,7 @@ public class CurrencyController {
 
 	
 	@RequestMapping(value = "{userId}")
-	public Currencies getCurrenciesByUserIdAndCountryCode(@PathVariable(value = "userId") final String userId) {
+	public Currencies getCurrenciesByUserId(@PathVariable(value = "userId") final String userId) {
 		return service.getCurrenciesByUserIdAndCountryCodes(userId, null);
 	}
 	

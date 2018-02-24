@@ -7,8 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wipro.customertool.data.BankHoliday;
 import com.wipro.customertool.data.Calendar;
 import com.wipro.customertool.data.Calendars;
+import com.wipro.customertool.entity.BankHolidayEntity;
 import com.wipro.customertool.entity.CalendarEntity;
 import com.wipro.customertool.repository.CalendarRepository;
 import com.wipro.customertool.repository.CountryRepository;
@@ -56,12 +58,22 @@ public class CalendarService {
 		
 		for (CalendarEntity entity : entities) {
 			Calendar calendar = new Calendar();
-			
-			calendar.setFlag(entity.getFlag());
+			calendar.setId(entity.getId());
 			calendar.setCalendarCode(entity.getCalendarCode());
 			calendar.setCountryCode(entity.getCountryCode());
 			calendar.setUserId(entity.getUserId());
-			calendar.setDescription(entity.getDescription());
+			calendar.setCalendarDescription(entity.getCalendarDescription());
+			
+			List<BankHoliday> bankHolidays = new ArrayList<>();
+			for(BankHolidayEntity holidayEntity : entity.getDatesAndFlags()) {
+				BankHoliday bankHoliday = new BankHoliday();
+				bankHoliday.setId(holidayEntity.getId());
+				bankHoliday.setDate(holidayEntity.getDate());
+				bankHoliday.setFlag(holidayEntity.getFlag());
+				bankHolidays.add(bankHoliday);
+			}
+			
+			calendar.setDatesAndFlags(bankHolidays);
 			
 			calendars.add(calendar);
 		}
@@ -76,9 +88,19 @@ public class CalendarService {
 			entity.setId(calendar.getId());
 			entity.setCountryCode(calendar.getCountryCode());
 			entity.setCalendarCode(calendar.getCalendarCode());
-			entity.setFlag(calendar.getFlag());
 			entity.setUserId(calendar.getUserId());
-			entity.setDescription(calendar.getDescription());
+			entity.setCalendarDescription(calendar.getCalendarDescription());
+			
+			List<BankHolidayEntity> bankHolidayEntities = new ArrayList<>();
+			for(BankHoliday bankHoliday : calendar.getDatesAndFlags()) {
+				BankHolidayEntity holidayEntity = new BankHolidayEntity();
+				holidayEntity.setId(bankHoliday.getId());
+				holidayEntity.setDate(bankHoliday.getDate());
+				holidayEntity.setFlag(bankHoliday.getFlag());
+				bankHolidayEntities.add(holidayEntity);
+			}
+			
+			entity.setDatesAndFlags(bankHolidayEntities);
 			
 			entities.add(entity);
 		}

@@ -56,6 +56,7 @@ public class BankService {
 		
 		for (BankEntity entity : entities) {
 			Bank bank = new Bank();
+			bank.setId(entity.getId());
 			bank.setBankCode(entity.getBankCode());
 			bank.setCountryCode(entity.getCountryCode());
 			bank.setUserId(entity.getUserId());

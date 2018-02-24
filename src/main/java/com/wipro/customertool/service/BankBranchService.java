@@ -58,6 +58,7 @@ public class BankBranchService {
 		
 		for (BankBranchEntity entity : entities) {
 			BankBranch bankBranch = new BankBranch();
+			bankBranch.setId(entity.getId());
 			bankBranch.setBankBranchCode(entity.getBankBranchCode());
 			bankBranch.setAction(entity.getAction());
 			bankBranch.setBankCode(entity.getBankCode());
