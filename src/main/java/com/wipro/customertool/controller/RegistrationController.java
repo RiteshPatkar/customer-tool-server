@@ -20,7 +20,7 @@ public class RegistrationController {
 	@RequestMapping(method = POST)
 	public String register(@RequestBody User user) {
 		service.register(user);
-		return "success";
+		return "{}";
 	}
 
 }
