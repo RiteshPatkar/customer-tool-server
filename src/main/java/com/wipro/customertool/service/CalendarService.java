@@ -63,6 +63,7 @@ public class CalendarService {
 			calendar.setCountryCode(entity.getCountryCode());
 			calendar.setUserId(entity.getUserId());
 			calendar.setCalendarDescription(entity.getCalendarDescription());
+			calendar.setClosedDays(entity.getClosedDays());
 			
 			List<BankHoliday> bankHolidays = new ArrayList<>();
 			for(BankHolidayEntity holidayEntity : entity.getDatesAndFlags()) {
@@ -90,6 +91,7 @@ public class CalendarService {
 			entity.setCalendarCode(calendar.getCalendarCode());
 			entity.setUserId(calendar.getUserId());
 			entity.setCalendarDescription(calendar.getCalendarDescription());
+			entity.setClosedDays(calendar.getClosedDays());
 			
 			List<BankHolidayEntity> bankHolidayEntities = new ArrayList<>();
 			for(BankHoliday bankHoliday : calendar.getDatesAndFlags()) {
