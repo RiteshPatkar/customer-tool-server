@@ -87,7 +87,7 @@ public class CalendarService {
 		for (Calendar calendar : calendars) {
 			CalendarEntity entity = new CalendarEntity();
 			entity.setId(calendar.getId());
-			entity.setCountryCode(calendar.getCountryCode());
+			entity.setCountryCode((calendar.getCountryCode() != null) ? calendar.getCountryCode() : calendar.getCalendarCode());
 			entity.setCalendarCode(calendar.getCalendarCode());
 			entity.setUserId(calendar.getUserId());
 			entity.setCalendarDescription(calendar.getCalendarDescription());
@@ -97,6 +97,7 @@ public class CalendarService {
 			for(BankHoliday bankHoliday : calendar.getDatesAndFlags()) {
 				BankHolidayEntity holidayEntity = new BankHolidayEntity();
 				holidayEntity.setId(bankHoliday.getId());
+//				holidayEntity.setCalendarId(calendar.getId());
 				holidayEntity.setDate(bankHoliday.getDate());
 				holidayEntity.setFlag(bankHoliday.getFlag());
 				bankHolidayEntities.add(holidayEntity);
