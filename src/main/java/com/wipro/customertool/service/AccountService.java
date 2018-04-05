@@ -27,13 +27,16 @@ public class AccountService {
 		List<AccountEntity> accountEntities = null;
 		
 		
+//		if(null == countryCodes) {
+//			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
+//			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
+//				accountEntities =  accountRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
+//			} else {
+//				accountEntities =  accountRepository.findByUserId(userId);
+//			}
+//		}
 		if(null == countryCodes) {
-			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
-			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
-				accountEntities =  accountRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
-			} else {
 				accountEntities =  accountRepository.findByUserId(userId);
-			}
 		}
 		else {
 			accountEntities =  accountRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));

@@ -87,7 +87,7 @@ public class CalendarService {
 		for (Calendar calendar : calendars) {
 			CalendarEntity entity = new CalendarEntity();
 			entity.setId(calendar.getId());
-			entity.setCountryCode((calendar.getCountryCode() != null) ? calendar.getCountryCode() : calendar.getCalendarCode());
+			entity.setCountryCode(calendar.getCalendarCode());
 			entity.setCalendarCode(calendar.getCalendarCode());
 			entity.setUserId(calendar.getUserId());
 			entity.setCalendarDescription(calendar.getCalendarDescription());

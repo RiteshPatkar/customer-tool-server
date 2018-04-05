@@ -27,13 +27,17 @@ public class BankBranchService {
 		List<BankBranchEntity> bankBranchEntities = null;
 		
 		
+//		if(null == countryCodes) {
+//			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
+//			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
+//				bankBranchEntities =  bankBranchRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
+//			} else {
+//				bankBranchEntities =  bankBranchRepository.findByUserId(userId);
+//			}
+//		}
 		if(null == countryCodes) {
-			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
-			if(null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
-				bankBranchEntities =  bankBranchRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(retrievedCountryCodes));
-			} else {
+
 				bankBranchEntities =  bankBranchRepository.findByUserId(userId);
-			}
 		}
 		else {
 			bankBranchEntities =  bankBranchRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));

@@ -26,14 +26,16 @@ public class CompanyService {
 
 		List<CompanyEntity> companyEntities = null;
 
+//		if (null == countryCodes) {
+//			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
+//			if (null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
+//				companyEntities = companyRepository.findByUserIdAndCountryCodeIn(userId,
+//						Arrays.asList(retrievedCountryCodes));
+//			} else {
+//				companyEntities = companyRepository.findByUserId(userId);
+//			}
 		if (null == countryCodes) {
-			String[] retrievedCountryCodes = countryRepository.getcountryCodesForYFlag(Integer.valueOf(userId));
-			if (null != retrievedCountryCodes && retrievedCountryCodes.length > 0) {
-				companyEntities = companyRepository.findByUserIdAndCountryCodeIn(userId,
-						Arrays.asList(retrievedCountryCodes));
-			} else {
 				companyEntities = companyRepository.findByUserId(userId);
-			}
 		} else {
 			companyEntities = companyRepository.findByUserIdAndCountryCodeIn(userId, Arrays.asList(countryCodes));
 		}
